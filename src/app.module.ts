@@ -9,9 +9,6 @@ import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
-    ServeStaticModule.forRoot({
-     rootPath: join(__dirname, '..', '..', 'public'),
-    }),
     PrismaModule,
     CategoriesModule,
     ProductsModule,
