@@ -6,7 +6,7 @@
     "start": "node dist/src/main.js",
     "start:prod": "node dist/src/main.js",
     "postinstall": "prisma generate",
-    "seed": "node --max-old-space-size=4096 prisma/seed.ts"
+       "seed:prod": "ts-node prisma/seed.ts"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
