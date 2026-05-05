@@ -61,43 +61,46 @@ export class BotService implements OnModuleInit {
     });
   }
 
-  async sendNewOrder(order: any) {
+ async sendNewOrder(order: any) {
+  const chatId = process.env.TELEGRAM_CHAT_ID;
+  if (!chatId) {
+    console.error('TELEGRAM_CHAT_ID is not set');
+    return;
+  }
 
-      
+  const itemLines = order.items
+    .map((i: any) => `• ${i.product.name} × ${i.quantity} — ${i.price * i.quantity} ₽`)
+    .join('\n');
 
-    const text = `
-🆕 Новый заказ
+  const total = order.items.reduce(
+    (sum: number, i: any) => sum + i.price * i.quantity, 0
+  );
+
+  const text = `
+🆕 Новый заказ #${order.id}
 
 👤 ${order.name}
 📞 ${order.phone}
 📍 ${order.address}
 
-💰 ${order.total ?? "—"} ₽
-`;
+${itemLines}
 
-const chatId = process.env.TELEGRAM_CHAT_ID;
-  
-  if (!chatId) {
-    console.error('TELEGRAM_CHAT_ID is not set');
-    return; // не бросаем ошибку, просто пропускаем
-  }
+💰 Итого: ${total} ₽
+  `.trim();
 
-  await this.bot.sendMessage(chatId, text,);
-
-
-    await this.bot.sendMessage(process.env.TELEGRAM_CHAT_ID!, text, {
-      reply_markup: {
-        inline_keyboard: [
-          [
-            { text: "✅ Принять", callback_data: `accepted:${order.id}` },
-            { text: "❌ Отклонить", callback_data: `rejected:${order.id}` },
-          ],
-          [
-            { text: "🚚 В пути", callback_data: `delivering:${order.id}` },
-            { text: "📦 Доставлено", callback_data: `delivered:${order.id}` },
-          ],
+  await this.bot.sendMessage(chatId, text, {
+    reply_markup: {
+      inline_keyboard: [
+        [
+          { text: '✅ Принять', callback_data: `accepted:${order.id}` },
+          { text: '❌ Отклонить', callback_data: `rejected:${order.id}` },
         ],
-      },
-    });
-  }
+        [
+          { text: '🚚 В пути', callback_data: `delivering:${order.id}` },
+          { text: '📦 Доставлено', callback_data: `delivered:${order.id}` },
+        ],
+      ],
+    },
+  });
+}
 }
