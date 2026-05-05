@@ -62,6 +62,9 @@ export class BotService implements OnModuleInit {
   }
 
   async sendNewOrder(order: any) {
+
+      
+
     const text = `
 🆕 Новый заказ
 
@@ -71,6 +74,16 @@ export class BotService implements OnModuleInit {
 
 💰 ${order.total ?? "—"} ₽
 `;
+
+const chatId = process.env.TELEGRAM_CHAT_ID;
+  
+  if (!chatId) {
+    console.error('TELEGRAM_CHAT_ID is not set');
+    return; // не бросаем ошибку, просто пропускаем
+  }
+
+  await this.bot.sendMessage(chatId, text,);
+
 
     await this.bot.sendMessage(process.env.TELEGRAM_CHAT_ID!, text, {
       reply_markup: {
