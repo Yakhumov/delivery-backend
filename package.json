@@ -6,7 +6,7 @@
     "start": "node dist/src/main.js",
     "start:prod": "node dist/src/main.js",
     "postinstall": "prisma generate",
-       "seed:prod": "ts-node prisma/seed.ts"
+    "seed:prod": "ts-node prisma/seed.ts"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
@@ -20,6 +20,8 @@
     "@nestjs/serve-static": "^4.0.0",
     "@prisma/client": "^5.22.0",
     "dotenv": "^17.4.2",
+    "node-fetch": "^3.3.2",
+    "node-telegram-bot-api": "^0.67.0",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
     "pg": "^8.20.0",

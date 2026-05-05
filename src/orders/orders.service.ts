@@ -1,5 +1,6 @@
 import { Injectable, BadRequestException, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
+import { BotService } from '../bot/bot.service';
 
 function normalizePhone(phone: string): string {
   return phone.replace(/\D/g, '');
@@ -7,7 +8,10 @@ function normalizePhone(phone: string): string {
 
 @Injectable()
 export class OrdersService {
-  constructor(private prisma: PrismaService) {}
+  constructor(
+    private prisma: PrismaService,
+    private botService: BotService, // 👈 ВАЖНО
+  ) {}
 
   async create(body: {
     name: string;
@@ -28,9 +32,11 @@ export class OrdersService {
         const product = await this.prisma.product.findUnique({
           where: { id: item.productId },
         });
+
         if (!product) {
           throw new NotFoundException(`Product ${item.productId} not found`);
         }
+
         return {
           productId: item.productId,
           quantity: item.quantity,
@@ -39,7 +45,7 @@ export class OrdersService {
       }),
     );
 
-    return this.prisma.order.create({
+    const order = await this.prisma.order.create({
       data: {
         name,
         phone,
@@ -48,10 +54,16 @@ export class OrdersService {
       },
       include: { items: { include: { product: true } } },
     });
+
+    // 👉 ВОТ ГДЕ ВЫЗЫВАЕМ ТГ
+    await this.botService.sendNewOrder(order);
+
+    return order;
   }
 
   findByPhone(rawPhone: string) {
     const phone = normalizePhone(rawPhone);
+
     return this.prisma.order.findMany({
       where: { phone },
       include: { items: { include: { product: true } } },
@@ -61,6 +73,7 @@ export class OrdersService {
 
   async updateStatus(id: number, status: string) {
     const order = await this.prisma.order.findUnique({ where: { id } });
+
     if (!order) throw new NotFoundException('Order not found');
 
     return this.prisma.order.update({
