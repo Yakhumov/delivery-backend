@@ -29,11 +29,11 @@ async function main() {
     data: [
       {
         id: 1,
-        name: "Молоко 3.2% 1л",
+        name: "Молоко зеленое село 3.2% 1л",
         price: 89,
         categoryId: 1,
         imageUrl:
-          "https://apeti.ru/upload/iblock/2cb/zcncftln93yexagd1dsykhjze5ybgt9u/moloko_ekomilk_2_5_bzmzh_930_ml.jpg",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7uPXfDQ-fZAXVhQuTNBAUkCLeoWj6fbJcBQ&s",
       },
       {
         id: 2,
@@ -161,7 +161,7 @@ async function main() {
         price: 99,
         categoryId: 4,
         imageUrl:
-          "https://apeti.ru/upload/iblock/2cb/zcncftln93yexagd1dsykhjze5ybgt9u/ris_dlinnozernyy_1_kg.jpg",
+          "https://calorizator.ru/sites/default/files/imagecache/product_512/product/rice-makfa-3.jpghttps://apeti.ru/upload/iblock/2cb/zcncftln93yexagd1dsykhjze5ybgt9u/ris_dlinnozernyy_1_kg.jpg",
       },
       {
         id: 18,
@@ -169,7 +169,7 @@ async function main() {
         price: 89,
         categoryId: 4,
         imageUrl:
-          "https://apeti.ru/upload/iblock/2cb/zcncftln93yexagd1dsykhjze5ybgt9u/grechka_1_kg.jpg",
+          "https://tsx.x5static.net/i/400x400-fit/xdelivery/files/ee/64/169b9428cca182eddc132410c15b.jpg",
       },
       {
         id: 19,
@@ -177,7 +177,7 @@ async function main() {
         price: 69,
         categoryId: 4,
         imageUrl:
-          "https://apeti.ru/upload/iblock/2cb/zcncftln93yexagd1dsykhjze5ybgt9u/makaronu_spagetti_500_g.jpg",
+          "https://krasnodar.svetofors.ru/upload/catalog/ru/0_33083400_1662458065.jpghttps://apeti.ru/upload/iblock/2cb/zcncftln93yexagd1dsykhjze5ybgt9u/makaronu_spagetti_500_g.jpg",
       },
       {
         id: 20,
@@ -185,15 +185,15 @@ async function main() {
         price: 129,
         categoryId: 4,
         imageUrl:
-          "https://apeti.ru/upload/iblock/2cb/zcncftln93yexagd1dsykhjze5ybgt9u/maslo_podsolnechnoe_1_l.jpg",
+          "https://tsx.x5static.net/i/800x800-fit/xdelivery/files/d0/97/0c60cea3725faee4b90edf76c26e.jpg",
       },
       {
         id: 21,
-        name: "Сахар 1кг",
+        name: "Сахар 450г",
         price: 79,
         categoryId: 4,
         imageUrl:
-          "https://apeti.ru/upload/iblock/2cb/zcncftln93yexagd1dsykhjze5ybgt9u/sugar_1_kg.jpg",
+          "https://ir.ozone.ru/s3/multimedia-1-8/c400/7725447152.jpg",
       },
       {
         id: 22,
@@ -201,7 +201,7 @@ async function main() {
         price: 299,
         categoryId: 5,
         imageUrl:
-          "https://apeti.ru/upload/iblock/2cb/zcncftln93yexagd1dsykhjze5ybgt9u/kurinoe_filye_1_kg.jpg",
+          "https://tsx.x5static.net/i/800x800-fit/xdelivery/files/14/9e/307d392f38de5f322d523cbb2f10.jpg",
       },
       {
         id: 23,
@@ -209,15 +209,15 @@ async function main() {
         price: 699,
         categoryId: 5,
         imageUrl:
-          "https://apeti.ru/upload/iblock/2cb/zcncftln93yexagd1dsykhjze5ybgt9u/govyadina_virezka_1_kg.jpg",
+          "https://ir.ozone.ru/s3/multimedia-1-a/c400/8247255238.jpg",
       },
       {
         id: 24,
-        name: "Колбаса Докторская 400г",
+        name: "Колбаса Аргунский 400г",
         price: 249,
         categoryId: 5,
         imageUrl:
-          "https://apeti.ru/upload/iblock/2cb/zcncftln93yexagd1dsykhjze5ybgt9u/kolbasa_doktorskaya_400_g.jpg",
+          "https://parhato.ru/wp-content/uploads/2022/11/14e2ee5a611a11eda27800155d01c83b_d2bed86a615811ed98d100155d203202.jpg",
       },
       {
         id: 25,
@@ -225,7 +225,7 @@ async function main() {
         price: 199,
         categoryId: 5,
         imageUrl:
-          "https://apeti.ru/upload/iblock/2cb/zcncftln93yexagd1dsykhjze5ybgt9u/sosiski_molochnyye_500_g.jpg",
+          "https://kochevniki-halal.ru/wp-content/uploads/2024/08/sosiski-slivochnye-1.jpg",
       },
       {
         id: 26,
@@ -233,7 +233,7 @@ async function main() {
         price: 599,
         categoryId: 6,
         imageUrl:
-          "https://apeti.ru/upload/iblock/2cb/zcncftln93yexagd1dsykhjze5ybgt9u/losos_steyk_500_g.jpg",
+          "https://artiseafood.ru/upload/iblock/a87/a87af2159ad5f48cf757c91bf15fc42b.jpg",
       },
       {
         id: 27,
@@ -257,7 +257,7 @@ async function main() {
         price: 59,
         categoryId: 7,
         imageUrl:
-          "https://apeti.ru/upload/iblock/2cb/zcncftln93yexagd1dsykhjze5ybgt9u/voda_mineralnaya_1.5_l.jpg",
+          "https://mineralka.store/wa-data/public/shop/products/63/08/10863/images/125178/125178.970.png",
       },
       {
         id: 30,
@@ -265,7 +265,7 @@ async function main() {
         price: 119,
         categoryId: 7,
         imageUrl:
-          "https://apeti.ru/upload/iblock/2cb/zcncftln93yexagd1dsykhjze5ybgt9u/sok_apelsinovyy_1_l.jpg",
+          "https://opttorg-horeca.ru/assets/images/catalog/sok/dobryj-apelsin.jpg",
       },
       {
         id: 31,
@@ -273,7 +273,7 @@ async function main() {
         price: 99,
         categoryId: 7,
         imageUrl:
-          "https://apeti.ru/upload/iblock/2cb/zcncftln93yexagd1dsykhjze5ybgt9u/kola_1.5_l.jpg",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdp8YM-y0Egy3eOu40aNXK0APIGx2qPS1ovw&s",
       },
       {
         id: 32,
@@ -281,7 +281,7 @@ async function main() {
         price: 149,
         categoryId: 7,
         imageUrl:
-          "https://apeti.ru/upload/iblock/2cb/zcncftln93yexagd1dsykhjze5ybgt9u/zelyoniy_chay_100_g.jpg",
+          "https://www.deloks.ru/upload/iblock/2bc/ffunwh3a6o3gno3yl7qau1pogle9n547/chay_zelenyy_lipton_green_100_paketikov_v_upakovke_9_full.jpg",
       },
       {
         id: 33,
@@ -289,7 +289,7 @@ async function main() {
         price: 99,
         categoryId: 8,
         imageUrl:
-          "https://apeti.ru/upload/iblock/2cb/zcncftln93yexagd1dsykhjze5ybgt9u/shokolad_molochnyy_100_g.jpg",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRST5Xw9AaI8l1LSPSdJVee3BL4iihJEpY_IQ&s",
       },
       {
         id: 34,
@@ -297,79 +297,72 @@ async function main() {
         price: 199,
         categoryId: 8,
         imageUrl:
-          "https://apeti.ru/upload/iblock/2cb/zcncftln93yexagd1dsykhjze5ybgt9u/konfety_mishka_200_g.jpg",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRL6FlSOydUjoYmL-Cygu8zg06pnQTUmWw0VA&s",
       },
+    
       {
         id: 35,
-        name: "Мороженое Пломбир",
-        price: 79,
-        categoryId: 8,
-        imageUrl:
-          "https://apeti.ru/upload/iblock/2cb/zcncftln93yexagd1dsykhjze5ybgt9u/morozhenoe_plombir.jpg",
-      },
-      {
-        id: 36,
         name: "Мармелад 300г",
         price: 129,
         categoryId: 8,
         imageUrl:
-          "https://apeti.ru/upload/iblock/2cb/zcncftln93yexagd1dsykhjze5ybgt9u/marmelad_300_g.jpg",
+          "https://main-cdn.sbermegamarket.ru/big1/hlr-system/111/840/676/511/262/337/100045547788b0.jpg",
       },
       {
-        id: 37,
+        id: 36,
         name: "Чипсы Лэйс 150г",
         price: 99,
         categoryId: 9,
         imageUrl:
-          "https://apeti.ru/upload/iblock/2cb/zcncftln93yexagd1dsykhjze5ybgt9u/chipsy_leys_150_g.jpg",
+          "hhttps://tsx.x5static.net/i/400x400-fit/xdelivery/files/94/ce/f5c48f9b5545c4c8765bb1821f8f.jpg",
       },
       {
-        id: 38,
+        id: 37,
         name: "Орешки солёные 200г",
         price: 149,
         categoryId: 9,
         imageUrl:
-          "https://apeti.ru/upload/iblock/2cb/zcncftln93yexagd1dsykhjze5ybgt9u/oreshki_solennyye_200_g.jpg",
+          "https://tsx.x5static.net/i/400x400-fit/xdelivery/files/6e/e9/02ba9056a80f3cfd40f216fe22ca.jpg",
       },
       {
-        id: 39,
+        id: 38,
         name: "Сухарики ржаные 100г",
         price: 59,
         categoryId: 9,
         imageUrl:
-          "https://apeti.ru/upload/iblock/2cb/zcncftln93yexagd1dsykhjze5ybgt9u/sukhariki_rzhanyye_100_g.jpg",
+          "https://main-cdn.sbermegamarket.ru/big1/hlr-system/-42/795/820/871/215/27/100028792519b0.jpg",
       },
       {
-        id: 40,
+        id: 39,
         name: "Хлеб белый нарезной",
         price: 49,
         categoryId: 10,
         imageUrl:
-          "https://apeti.ru/upload/iblock/2cb/zcncftln93yexagd1dsykhjze5ybgt9u/hleb_belyi_nareznoi.jpg",
+          "https://thumbs.dreamstime.com/b/none-362830391.jpg",
       },
       {
-        id: 41,
+        id: 40,
         name: "Батон классический",
         price: 39,
         categoryId: 10,
         imageUrl:
-          "https://apeti.ru/upload/iblock/2cb/zcncftln93yexagd1dsykhjze5ybgt9u/baton_klassicheskiy.jpg",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrnKzuRNvaVk1L4pkdxMMxaRKCjKWBq3hgeQ&s",
       },
       {
-        id: 42,
+        id: 41,
         name: "Круассан масляный",
         price: 69,
         categoryId: 10,
         imageUrl:
-          "https://apeti.ru/upload/iblock/2cb/zcncftln93yexagd1dsykhjze5ybgt9u/kruassan_maslyanyy.jpg",
+          "https://thumbs.dreamstime.com/b/%D0%BA%D1%80%D1%83%D0%B0%D1%81%D1%81%D0%B0%D0%BD-%D1%81-%D0%BC%D0%B0%D1%81%D0%BB%D1%8F%D0%BD%D1%8B%D0%BC-%D0%BD%D0%B0%D0%BF%D0%BE%D0%BB%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5%D0%BC-%D0%B8%D0%B7%D0%BE%D0%BB%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D1%8B%D0%BC-%D0%BD%D0%B0-%D0%B1%D0%B5%D0%BB%D0%BE%D0%BC-%D1%84%D0%BE%D0%BD%D0%B5-267932714.jpg",
       },
       {
-        id: 43,
+        id: 42,
         name: "Хлеб Бородинский",
         price: 59,
         categoryId: 10,
         imageUrl:
-          "https://apeti.ru/upload/iblock/2cb/zcncftln93yexagd1dsykhjze5ybgt9u/hleb_borodinskiy.jpg",
+          "https://1xleb.ru/upload/iblock/68e/68e28a1a287e21e0aedd2acfc73c9c97.JPG",
       },
     ],
   });
