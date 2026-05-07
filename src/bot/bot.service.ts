@@ -18,14 +18,6 @@ export class BotService implements OnModuleInit {
       polling: true,
     });
 
-    console.log("BOT STARTED");
-
-    console.log("ENV TOKEN:", process.env.TELEGRAM_BOT_TOKEN);
-
-    // 👉 получить chatId
-    this.bot.on("message", (msg) => {
-      console.log("CHAT_ID:", msg.chat.id);
-    });
 
     // 👉 обработка кнопок
     this.bot.on("callback_query", async (query) => {
