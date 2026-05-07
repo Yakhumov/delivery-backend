@@ -13,7 +13,7 @@ async function main() {
   await prisma.category.createMany({
     data: [
       { id: 1, name: "Молочные продукты и яйца", imageUrl: "/images/categories/Молочка.jpg" },
-      { id: 2, name: "Овощи и фрукты", imageUrl: "/images/categories/Овощи.jpg" },
+      { id: 2, name: "Овощи и фрукты", imageUrl: "/images/categories/Овощи и фрукты.jpg" },
       { id: 3, name: "Готовая еда", imageUrl: "/images/categories/Еда.jpg" },
       { id: 4, name: "Бакалея", imageUrl: "/images/categories/Бакалея.jpg" },
       { id: 5, name: "Чай и кофе", imageUrl: "/images/categories/Чай кофе.jpg" },
