@@ -1,6 +1,6 @@
 import { Injectable, BadRequestException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import * as nodemailer from 'nodemailer';
+import { Resend } from 'resend';
 
 interface OtpEntry {
   code: string;
@@ -38,32 +38,29 @@ export class AuthService {
   }
 
   private async sendEmail(to: string, code: string): Promise<void> {
-    const user = process.env.SMTP_USER;
-    const pass = process.env.SMTP_PASS;
-
-    if (!user || !pass) {
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
       console.log(`[DEV] Email to ${to}: код ${code}`);
       return;
     }
 
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST ?? 'smtp.gmail.com',
-      port: Number(process.env.SMTP_PORT ?? 587),
-      secure: false,
-      auth: { user, pass },
-    });
-
-    await transporter.sendMail({
-      from: `"Uhhe" <${user}>`,
+    const resend = new Resend(apiKey);
+    const { error } = await resend.emails.send({
+      from: 'Uhhe <onboarding@resend.dev>',
       to,
       subject: 'Код подтверждения',
       html: `
-        <div style="font-family:sans-serif;max-width:400px;margin:0 auto">
-          <h2 style="color:#2ECC71">Ваш код входа</h2>
-          <p style="font-size:36px;font-weight:bold;letter-spacing:8px;color:#111">${code}</p>
-          <p style="color:#666">Код действителен 10 минут.</p>
+        <div style="font-family:sans-serif;max-width:400px;margin:0 auto;padding:24px">
+          <h2 style="color:#2ECC71;margin-bottom:8px">Ваш код входа</h2>
+          <p style="font-size:40px;font-weight:bold;letter-spacing:12px;color:#111;margin:16px 0">${code}</p>
+          <p style="color:#888;font-size:14px">Код действителен 10 минут.</p>
         </div>
       `,
     });
+
+    if (error) {
+      console.error('[Resend error]', error);
+      throw new BadRequestException('Ошибка отправки письма');
+    }
   }
 }
