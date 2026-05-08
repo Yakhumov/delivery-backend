@@ -1,3 +1,3 @@
 export class SendOtpDto {
-  phone: string;
+  email: string;
 }

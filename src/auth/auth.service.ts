@@ -1,5 +1,6 @@
 import { Injectable, BadRequestException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import * as nodemailer from 'nodemailer';
 
 interface OtpEntry {
   code: string;
@@ -12,52 +13,57 @@ export class AuthService {
 
   constructor(private readonly jwt: JwtService) {}
 
-  async sendOtp(phone: string): Promise<{ message: string }> {
+  async sendOtp(email: string): Promise<{ message: string }> {
     const code = Math.floor(1000 + Math.random() * 9000).toString();
-    this.otpStore.set(phone, { code, expiresAt: Date.now() + 5 * 60 * 1000 });
+    this.otpStore.set(email, { code, expiresAt: Date.now() + 10 * 60 * 1000 });
 
-    console.log(`[OTP] ${phone} → ${code}`);
-    await this.sendSms(phone, `Ваш код: ${code}`);
-    return { message: 'Код отправлен' };
+    console.log(`[OTP] ${email} → ${code}`);
+    await this.sendEmail(email, code);
+    return { message: 'Код отправлен на почту' };
   }
 
-  verifyOtp(phone: string, code: string): { token: string; phone: string } {
-    const entry = this.otpStore.get(phone);
+  verifyOtp(email: string, code: string): { token: string; email: string } {
+    const entry = this.otpStore.get(email);
 
     if (!entry) throw new BadRequestException('Код не найден или истёк');
     if (Date.now() > entry.expiresAt) {
-      this.otpStore.delete(phone);
+      this.otpStore.delete(email);
       throw new BadRequestException('Код истёк');
     }
     if (entry.code !== code) throw new BadRequestException('Неверный код');
 
-    this.otpStore.delete(phone);
-    const token = this.jwt.sign({ phone });
-    return { token, phone };
+    this.otpStore.delete(email);
+    const token = this.jwt.sign({ email });
+    return { token, email };
   }
 
-  private async sendSms(phone: string, message: string): Promise<void> {
-    const apiId = process.env.SMSRU_API_ID;
-    if (!apiId) {
-      // В режиме разработки просто выводим код в консоль
-      console.log(`[DEV] SMS to ${phone}: ${message}`);
+  private async sendEmail(to: string, code: string): Promise<void> {
+    const user = process.env.SMTP_USER;
+    const pass = process.env.SMTP_PASS;
+
+    if (!user || !pass) {
+      console.log(`[DEV] Email to ${to}: код ${code}`);
       return;
     }
 
-    const url = new URL('https://sms.ru/sms/send');
-    url.searchParams.set('api_id', apiId);
-    url.searchParams.set('to', phone);
-    url.searchParams.set('msg', message);
-    url.searchParams.set('json', '1');
-    if (process.env.SMSRU_TEST === '1') url.searchParams.set('test', '1');
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST ?? 'smtp.gmail.com',
+      port: Number(process.env.SMTP_PORT ?? 587),
+      secure: false,
+      auth: { user, pass },
+    });
 
-    const res = await fetch(url.toString());
-    const data = (await res.json()) as { status: string; status_code: number };
-
-    console.log('[SMS.RU response]', JSON.stringify(data));
-
-    if (data.status !== 'OK') {
-      throw new BadRequestException(`Ошибка SMS: код ${data.status_code}`);
-    }
+    await transporter.sendMail({
+      from: `"Uhhe" <${user}>`,
+      to,
+      subject: 'Код подтверждения',
+      html: `
+        <div style="font-family:sans-serif;max-width:400px;margin:0 auto">
+          <h2 style="color:#2ECC71">Ваш код входа</h2>
+          <p style="font-size:36px;font-weight:bold;letter-spacing:8px;color:#111">${code}</p>
+          <p style="color:#666">Код действителен 10 минут.</p>
+        </div>
+      `,
+    });
   }
 }
