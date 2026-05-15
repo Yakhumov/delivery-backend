@@ -36,7 +36,8 @@ export class AuthService {
     return { token, phone };
   }
 
-  private async sendSms(phone: string, message: string): Promise<void> {
+  private async sendSms(rawPhone: string, message: string): Promise<void> {
+    const phone = rawPhone.replace(/\D/g, '');
     const apiId = process.env.SMSRU_API_ID;
     if (!apiId) {
       console.log(`[DEV] SMS to ${phone}: ${message}`);
