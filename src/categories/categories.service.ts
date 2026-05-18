@@ -5,7 +5,9 @@ import { PrismaService } from '../prisma/prisma.service';
 export class CategoriesService {
   constructor(private prisma: PrismaService) {}
 
-  findAll() {
-    return this.prisma.category.findMany();
+  findAll(parentId?: number) {
+    return this.prisma.category.findMany({
+      where: { parentId: parentId ?? null },
+    });
   }
 }
