@@ -138,7 +138,7 @@ async function main() {
       // Морепродукты (62)
       { id: 28, name: "Креветки 500г",           price: 449, categoryId: 62, imageUrl: "https://tsx.x5static.net/i/800x800-fit/xdelivery/files/44/4b/61f760b66c0a44756c5e22xd13da.jpg" },
       // Консервы (63)
-      { id: 27, name: "Тунец консервированный",  price: 149, categoryId: 63, imageUrl: "https://opis-cdn.tinkoffjournal.ru/mercury/canned-tuna-11.cfcblsputg0l..jpg" },
+      { id: 27, name: "Тунец консервированный",  price: 149, categoryId: 63, imageUrl: "https://ir.ozone.ru/s3/multimedia-1-j/c400/8541536527.jpg" },
 
       // Вода (71)
       { id: 29, name: "Вода минеральная 1.5л",   price: 59,  categoryId: 71, imageUrl: "https://mineralka.store/wa-data/public/shop/products/63/08/10863/images/125178/125178.970.png" },
@@ -165,7 +165,7 @@ async function main() {
 
       // Хлеб (101)
       { id: 39, name: "Хлеб белый нарезной",      price: 49,  categoryId: 101, imageUrl: "https://thumbs.dreamstime.com/b/none-362830391.jpg" },
-      { id: 42, name: "Хлеб Бородинский",         price: 59,  categoryId: 101, imageUrl: "https://ir.ozone.ru/s3/multimedia-1-b/c400/7472153207.jpg" },
+      { id: 42, name: "Хлеб Бородинский",         price: 59,  categoryId: 101, imageUrl: "https://rusbread.ru/uploads/image_item/image/7598/IMG_0761.jpg" },
       // Выпечка (102)
       { id: 40, name: "Батон классический",       price: 39,  categoryId: 102, imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrnKzuRNvaVk1L4pkdxMMxaRKCjKWBq3hgeQ&s" },
       { id: 41, name: "Круассан масляный",        price: 69,  categoryId: 102, imageUrl: "https://thumbs.dreamstime.com/b/%D0%BA%D1%80%D1%83%D0%B0%D1%81%D1%81%D0%B0%D0%BD-%D1%81-%D0%BC%D0%B0%D1%81%D0%BB%D1%8F%D0%BD%D1%8B%D0%BC-%D0%BD%D0%B0%D0%BF%D0%BE%D0%BB%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5%D0%BC-%D0%B8%D0%B7%D0%BE%D0%BB%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D1%8B%D0%BC-%D0%BD%D0%B0-%D0%B1%D0%B5%D0%BB%D0%BE%D0%BC-%D1%84%D0%BE%D0%BD%D0%B5-267932714.jpg" },
