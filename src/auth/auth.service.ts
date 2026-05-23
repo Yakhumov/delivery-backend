@@ -50,14 +50,24 @@ export class AuthService {
     url.searchParams.set('msg', message);
     url.searchParams.set('json', '1');
     if (process.env.SMSRU_TEST === '1') url.searchParams.set('test', '1');
+       if (process.env.SMSRU_API_ID) url.searchParams.set('from', process.env.SMSRU_API_ID);
 
     const res = await fetch(url.toString());
-    const data = (await res.json()) as { status: string; status_code: number };
+    const data = (await res.json()) as {
+      status: string;
+      status_code: number;
+      sms?: Record<string, { status: string; status_code: number; status_text: string }>;
+    };
 
     console.log('[SMS.RU]', JSON.stringify(data));
 
     if (data.status !== 'OK') {
       throw new BadRequestException(`Ошибка SMS: код ${data.status_code}`);
+    }
+
+    const smsEntry = data.sms ? Object.values(data.sms)[0] : null;
+    if (smsEntry && smsEntry.status === 'ERROR') {
+      throw new BadRequestException(`Ошибка доставки SMS: ${smsEntry.status_text}`);
     }
   }
 }
