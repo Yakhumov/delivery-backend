@@ -11,16 +11,16 @@ async function main() {
   // ───── Родительские категории (10 штук) ─────
   await prisma.category.createMany({
     data: [
-      { id: 1,  name: "Молочные продукты", imageUrl: "/images/categories/Молочка.jpg" },
-      { id: 2,  name: "Овощи и фрукты",    imageUrl: "/images/categories/Овощи и фрукты.jpg" },
-      { id: 3,  name: "Готовая еда",        imageUrl: "/images/categories/Готовая еда.jpg" },
-      { id: 4,  name: "Бакалея",            imageUrl: "/images/categories/Бакалея.jpg" },
-      { id: 5,  name: "Мясо и птица",       imageUrl: "/images/categories/Мясо.jpg" },
-      { id: 6,  name: "Морепродукты",       imageUrl: "/images/categories/Рыба.jpg" },
-      { id: 7,  name: "Вода и напитки",     imageUrl: "/images/categories/Напитки.jpg" },
-      { id: 8,  name: "Сладости",           imageUrl: "/images/categories/Сладости.jpg" },
-      { id: 9,  name: "Снеки и чипсы",      imageUrl: "/images/categories/Снеки.jpg" },
-      { id: 10, name: "Хлеб и выпечка",     imageUrl: "/images/categories/Хлеб.jpg" },
+      { id: 1,  name: "Молочные продукты", imageUrl: "/images/categories/Молочка.webp" },
+      { id: 2,  name: "Овощи и фрукты",    imageUrl: "/images/categories/Овощи и фрукты.webp" },
+      { id: 3,  name: "Чай кофе",        imageUrl: "/images/categories/Чай кофе (1).webp" },
+      { id: 4,  name: "Бакалея",            imageUrl: "/images/categories/Бакалея.webp" },
+      { id: 5,  name: "Замороженные продукты",       imageUrl: "/images/categories/Замороженные продукты.webp" },
+      { id: 6,  name: "Морепродукты",       imageUrl: "/images/categories/Рыба.webp" },
+      { id: 7,  name: "Вода и напитки",     imageUrl: "/images/categories/Напитки.webp" },
+      { id: 8,  name: "Сладости",           imageUrl: "/images/categories/Сладости.webp" },
+      { id: 9,  name: "Снеки и чипсы",      imageUrl: "/images/categories/Снеки и чипсы.webp" },
+      { id: 10, name: "Хлеб и выпечка",     imageUrl: "/images/categories/Хлеб и выпечка.webp" },
     ],
   });
 
@@ -34,26 +34,21 @@ async function main() {
       { id: 14, name: "Сметана и масло",    imageUrl: null, parentId: 1 },
       { id: 15, name: "Яйца",               imageUrl: null, parentId: 1 },
 
+      // Замороженные продукты (5)
+      { id: 54, name: "Пельмени",              imageUrl: null, parentId: 5 },
+      { id: 55, name: "Манты",                 imageUrl: null, parentId: 5 },
+      { id: 56, name: "Вареники",              imageUrl: null, parentId: 5 },
+      { id: 57, name: "Замороженное мясо",     imageUrl: null, parentId: 5 },
+        
       // Овощи и фрукты (2)
       { id: 21, name: "Фрукты",             imageUrl: null, parentId: 2 },
       { id: 22, name: "Овощи",              imageUrl: null, parentId: 2 },
-
-      // Готовая еда (3)
-      { id: 31, name: "Пицца",              imageUrl: null, parentId: 3 },
-      { id: 32, name: "Салаты",             imageUrl: null, parentId: 3 },
-      { id: 33, name: "Суши и роллы",       imageUrl: null, parentId: 3 },
-      { id: 34, name: "Горячие блюда",      imageUrl: null, parentId: 3 },
 
       // Бакалея (4)
       { id: 41, name: "Крупы",              imageUrl: null, parentId: 4 },
       { id: 42, name: "Макароны",           imageUrl: null, parentId: 4 },
       { id: 43, name: "Масла",              imageUrl: null, parentId: 4 },
       { id: 44, name: "Сахар и соль",       imageUrl: null, parentId: 4 },
-
-      // Мясо и птица (5)
-      { id: 51, name: "Птица",              imageUrl: null, parentId: 5 },
-      { id: 52, name: "Говядина",           imageUrl: null, parentId: 5 },
-      { id: 53, name: "Колбасы и сосиски",  imageUrl: null, parentId: 5 },
 
       // Морепродукты (6)
       { id: 61, name: "Рыба",               imageUrl: null, parentId: 6 },
@@ -64,7 +59,6 @@ async function main() {
       { id: 71, name: "Вода",               imageUrl: null, parentId: 7 },
       { id: 72, name: "Соки",               imageUrl: null, parentId: 7 },
       { id: 73, name: "Газированные",       imageUrl: null, parentId: 7 },
-      { id: 74, name: "Чай и кофе",         imageUrl: null, parentId: 7 },
 
       // Сладости (8)
       { id: 81, name: "Шоколад",            imageUrl: null, parentId: 8 },
@@ -76,9 +70,15 @@ async function main() {
       { id: 92, name: "Орехи",              imageUrl: null, parentId: 9 },
       { id: 93, name: "Сухарики",           imageUrl: null, parentId: 9 },
 
+      // Чай кофе (3)
+      { id: 31, name: "Чай",               imageUrl: null, parentId: 3 },
+      { id: 32, name: "Кофе",              imageUrl: null, parentId: 3 },
+
       // Хлеб и выпечка (10)
       { id: 101, name: "Хлеб",             imageUrl: null, parentId: 10 },
       { id: 102, name: "Выпечка",          imageUrl: null, parentId: 10 },
+
+
     ],
   });
 
@@ -100,20 +100,15 @@ async function main() {
       // Фрукты (21)
       { id: 7,  name: "Яблоки 1кг",   price: 99, categoryId: 21, imageUrl: "https://tsx.x5static.net/i/800x800-fit/xdelivery/files/16/82/d7a3a2fa93e8bdf02688a45c6405.jpg" },
       { id: 8,  name: "Бананы 1кг",   price: 79, categoryId: 21, imageUrl: "https://fruitsparadise.ru/wp-content/uploads/2019/02/Banana1-1.jpg" },
+      { id: 47, name: "Киви 1кг",   price: 150, categoryId: 21, imageUrl: "https://media.vprok.ru/products/x700/sq/3x/sexvnv4iedn5hwbikocpquv4myvg3xsq.jpeg" },
+      { id: 48, name: "Груши 1кг",   price: 170, categoryId: 21, imageUrl: "https://media.vprok.ru/products/x700/vj/p6/n2g7uqmgonmbbzj563lac3nxf66ap6vj.jpeg" },
+
+
       // Овощи (22)
       { id: 9,  name: "Помидоры 1кг", price: 119, categoryId: 22, imageUrl: "https://sibprod.info/upload/resize_cache/iblock/6c7/1680_1050_19d1669f6609e6dfcaeac28e5aab5b3be/6c7d8d259fc5a7a5b05941bdb0abc788.jpg" },
       { id: 10, name: "Огурцы 1кг",   price: 89,  categoryId: 22, imageUrl: "https://sibprod.info/upload/resize_cache/iblock/b85/1800_1200_19d1669f6609e6dfcaeac28e5aab5b3be/b85a11f31960948145e43fde0bbdb5b8.jpg" },
       { id: 11, name: "Морковь 1кг",  price: 49,  categoryId: 22, imageUrl: "https://tsx.x5static.net/i/800x800-fit/xdelivery/files/51/d7/0b72908e8078619617f924081d51.jpg" },
       { id: 12, name: "Картофель 2кг",price: 79,  categoryId: 22, imageUrl: "https://img.megastroycdn.ru/_8jRn3ruDs0/products/e678d7be60db0da91725ef45d07f3795227b22549f35817904eb2c805c9196a9/491849_1.jpg" },
-
-      // Пицца (31)
-      { id: 13, name: "Пицца Маргарита",      price: 399, categoryId: 31, imageUrl: "https://the-cafe.ru/wp-content/uploads/2020/11/147c3814bbb34a77afdbc66e9ef20ed7_584x584.jpeg" },
-      // Салаты (32)
-      { id: 14, name: "Цезарь с курицей",     price: 349, categoryId: 32, imageUrl: "https://static.pizzasushiwok.ru/images/menu_new/60-1300.jpg" },
-      // Суши и роллы (33)
-      { id: 15, name: "Суши сет 20шт",        price: 699, categoryId: 33, imageUrl: "https://sushispace74.ru/upload/56283d7a-3112-f51b-2de9-67dd34f72291_image_c" },
-      // Горячие блюда (34)
-      { id: 16, name: "Плов с говядиной 500г",price: 299, categoryId: 34, imageUrl: "https://yastatic.net/avatars/get-grocery-goods/2888787/5f0074e7-e81c-4177-bdfa-1a14c85e603f/500x500-orig" },
 
       // Крупы (41)
       { id: 17, name: "Рис длиннозерный 1кг",  price: 99,  categoryId: 41, imageUrl: "https://tsx.x5static.net/i/400x400-fit/xdelivery/files/ee/64/169b9428cca182eddc132410c15b.jpg" },
@@ -124,14 +119,6 @@ async function main() {
       { id: 20, name: "Масло подсолнечное 1л",  price: 129, categoryId: 43, imageUrl: "https://tsx.x5static.net/i/800x800-fit/xdelivery/files/d0/97/0c60cea3725faee4b90edf76c26e.jpg" },
       // Сахар и соль (44)
       { id: 21, name: "Сахар 450г",             price: 79,  categoryId: 44, imageUrl: "https://ir.ozone.ru/s3/multimedia-1-8/c400/7725447152.jpg" },
-
-      // Птица (51)
-      { id: 22, name: "Куриное филе 1кг",       price: 299, categoryId: 51, imageUrl: "https://tsx.x5static.net/i/800x800-fit/xdelivery/files/14/9e/307d392f38de5f322d523cbb2f10.jpg" },
-      // Говядина (52)
-      { id: 23, name: "Говядина вырезка 1кг",   price: 699, categoryId: 52, imageUrl: "https://tsx.x5static.net/i/400x400-fit/xdelivery/files/d6/68/af2f3cbf04906e33b062ec8d8054.jpg" },
-      // Колбасы и сосиски (53)
-      { id: 24, name: "Колбаса Аргунский 400г", price: 249, categoryId: 53, imageUrl: "https://parhato.ru/wp-content/uploads/2022/11/14e2ee5a611a11eda27800155d01c83b_d2bed86a615811ed98d100155d203202.jpg" },
-      { id: 25, name: "Сосиски молочные 500г",  price: 199, categoryId: 53, imageUrl: "https://kochevniki-halal.ru/wp-content/uploads/2024/08/sosiski-slivochnye-1.jpg" },
 
       // Рыба (61)
       { id: 26, name: "Лосось стейк 500г",      price: 599, categoryId: 61, imageUrl: "https://artiseafood.ru/upload/iblock/a87/a87af2159ad5f48cf757c91bf15fc42b.jpg" },
@@ -146,8 +133,8 @@ async function main() {
       { id: 30, name: "Сок апельсиновый 1л",     price: 119, categoryId: 72, imageUrl: "https://opttorg-horeca.ru/assets/images/catalog/sok/dobryj-apelsin.jpg" },
       // Газированные (73)
       { id: 31, name: "Кола 1.5л",               price: 99,  categoryId: 73, imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdp8YM-y0Egy3eOu40aNXK0APIGx2qPS1ovw&s" },
-      // Чай и кофе (74)
-      { id: 32, name: "Зелёный чай 100г",        price: 149, categoryId: 74, imageUrl: "https://www.deloks.ru/upload/iblock/2bc/ffunwh3a6o3gno3yl7qau1pogle9n547/chay_zelenyy_lipton_green_100_paketikov_v_upakovke_9_full.jpg" },
+      // Чай (31)
+      { id: 32, name: "Зелёный чай 100г",        price: 149, categoryId: 31, imageUrl: "https://www.deloks.ru/upload/iblock/2bc/ffunwh3a6o3gno3yl7qau1pogle9n547/chay_zelenyy_lipton_green_100_paketikov_v_upakovke_9_full.jpg" },
 
       // Шоколад (81)
       { id: 33, name: "Шоколад Молочный 100г",   price: 99,  categoryId: 81, imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRST5Xw9AaI8l1LSPSdJVee3BL4iihJEpY_IQ&s" },
@@ -169,10 +156,27 @@ async function main() {
       // Выпечка (102)
       { id: 40, name: "Батон классический",       price: 39,  categoryId: 102, imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrnKzuRNvaVk1L4pkdxMMxaRKCjKWBq3hgeQ&s" },
       { id: 41, name: "Круассан масляный",        price: 69,  categoryId: 102, imageUrl: "https://thumbs.dreamstime.com/b/%D0%BA%D1%80%D1%83%D0%B0%D1%81%D1%81%D0%B0%D0%BD-%D1%81-%D0%BC%D0%B0%D1%81%D0%BB%D1%8F%D0%BD%D1%8B%D0%BC-%D0%BD%D0%B0%D0%BF%D0%BE%D0%BB%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5%D0%BC-%D0%B8%D0%B7%D0%BE%D0%BB%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D1%8B%D0%BC-%D0%BD%D0%B0-%D0%B1%D0%B5%D0%BB%D0%BE%D0%BC-%D1%84%D0%BE%D0%BD%D0%B5-267932714.jpg" },
+
+
+        // Замороженные продукты (54)
+      { id: 23, name: "Пельмени 1кг ", price: 320, categoryId: 54, imageUrl:  "https://img.freepik.com/premium-photo/frozen-dumplings-white-background_128937-835.jpg" },
+      // Манты (55)
+      { id: 24, name: "Манты с мясом 1кг",       price: 400, categoryId: 55, imageUrl: "https://main-cdn.sbermegamarket.ru/big1/hlr-system/352/125/291/116/213/2/100045242047b0.jpg" },
+      // Вареники (56)
+      { id: 25, name: "Вареники с картошкой 800г", price: 359, categoryId: 56, imageUrl: "https://main-cdn.sbermegamarket.ru/big1/hlr-system/-20/166/156/098/122/44/100058607312b0.jpg" },
+
+      // Чай (31)
+      { id: 43, name: "Чай МК 250г",              price: 210, categoryId: 31, imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIZXWCmd8r02iwXq6owNMyvA6GAeijuaF0Pg&s" },
+      { id: 44, name: "Чай Марьям брокен 100г",   price: 142, categoryId: 31, imageUrl: "https://teaport.ru/wp-content/uploads/2021/04/416255_68992_%D0%9C%D0%90%D0%A0%D0%AC%D0%AF%D0%9C-%D1%87%D0%B0%D0%B9-%D1%87%D0%B5%D1%80%D0%BD%D1%8B%D0%B9-%D0%B1%D1%80%D0%BE%D0%BA%D0%B5%D0%BD-100%D0%B3-600x600.jpg" },
+      // Кофе (32)
+      { id: 45, name: "Кофе Якобс 95г",           price: 453, categoryId: 32, imageUrl: "https://main-cdn.sbermegamarket.ru/big1/hlr-system/753/060/429/431/135/100023256376b0.jpg" },
+      { id: 46, name: "Кофе Нескафе голд 95г",    price: 550, categoryId: 32, imageUrl: "https://mastfood.ru/upload/iblock/6dd/6dd50460d51b057dddc87fa5d066b6b9.jpg" },
+
+
     ],
   });
 
-  console.log("✅ Seed: 10 категорий + 33 подкатегории + 42 товара");
+  console.log("✅ Seed: 10 категорий + 30 подкатегорий + 34 товара");
 }
 
 main()
