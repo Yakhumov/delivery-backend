@@ -77,7 +77,7 @@ export class BotService implements OnModuleInit {
 
 ${itemLines}
 
-💰 Итого: ${total} ₽
+💰 Итого: ${total} ₽ 
   `.trim();
 
   await this.bot.sendMessage(chatId, text, {
