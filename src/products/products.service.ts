@@ -9,6 +9,7 @@ export class ProductsService {
     return this.prisma.product.findMany({
       where: categoryId ? { categoryId } : undefined,
       include: { category: true },
+      orderBy: { id: 'asc' },
     });
   }
 

@@ -1,6 +1,7 @@
 param(
   [string]$SeedPath = "prisma/seed.ts",
   [string]$OutputDir = "public/images/products",
+  [string[]]$LocalFiles = @(),
   [int]$WhiteThreshold = 238,
   [int]$MaxColorDistance = 34,
   [int]$MaxDimension = 350
@@ -122,6 +123,34 @@ function Resize-Bitmap {
 $seedFullPath = Join-Path (Get-Location) $SeedPath
 $outputFullDir = Join-Path (Get-Location) $OutputDir
 New-Item -ItemType Directory -Force $outputFullDir | Out-Null
+
+if ($LocalFiles.Count -gt 0) {
+  foreach ($localFile in $LocalFiles) {
+    $sourcePath = if ([System.IO.Path]::IsPathRooted($localFile)) {
+      $localFile
+    } else {
+      Join-Path (Get-Location) $localFile
+    }
+
+    try {
+      Write-Host "Processing local image: $localFile"
+      $bitmap = [System.Drawing.Bitmap]::new($sourcePath)
+      $resized = Resize-Bitmap $bitmap $MaxDimension
+      $processed = Remove-EdgeWhiteBackground $resized $WhiteThreshold $MaxColorDistance
+      $tempPath = "$sourcePath.tmp.png"
+      $processed.Save($tempPath, [System.Drawing.Imaging.ImageFormat]::Png)
+      $processed.Dispose()
+      $resized.Dispose()
+      $bitmap.Dispose()
+      Move-Item -LiteralPath $tempPath -Destination $sourcePath -Force
+    } catch {
+      Write-Warning "Skipped local image ${localFile}: $($_.Exception.Message)"
+    }
+  }
+
+  Write-Host "Processed $($LocalFiles.Count) local image(s)."
+  return
+}
 
 $seed = Get-Content -LiteralPath $seedFullPath -Raw -Encoding UTF8
 $backupPath = "$seedFullPath.before-product-backgrounds"
