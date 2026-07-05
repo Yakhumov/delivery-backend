@@ -230,6 +230,37 @@ async function main() {
         imageUrl: "/images/products/product-51.png",
       },
 
+       {
+        id: 59,
+        name: "Голубика 100г",
+        price: 130,
+        categoryId: 21,
+        imageUrl: "/images/products/product-seed-1-id-52.png",
+      },
+
+       {
+        id: 60,
+        name: "Нектарины 1кг",
+        price: 130,
+        categoryId: 21,
+        imageUrl: "/images/products/product-seed-2-id-53.png",
+      },
+      {
+        id: 61,
+        name: "Яблоки Гренни смит 1 кг",
+        price: 220,
+        categoryId: 21,
+        imageUrl: "/images/products/product-seed-3-id-54.png",
+      },
+
+      {
+        id: 62,
+        name: "Апельсины 1 кг",
+        price: 200,
+        categoryId: 21,
+        imageUrl: "/images/products/product-seed-4-id-55.png",
+      },
+
       // Овощи (22)
       {
         id: 9,
@@ -258,6 +289,55 @@ async function main() {
         price: 79,
         categoryId: 22,
         imageUrl: "/images/products/product-12.png",
+      },
+      {
+        id: 63,
+        name: "Лук репчатый 1кг",
+        price: 110,
+        categoryId: 22,
+        imageUrl: "/images/products/product-seed-5-id-13.png",
+      },
+       {
+        id: 64,
+        name: "Свекла 500г",
+        price: 110,
+        categoryId: 22,
+        imageUrl: "/images/products/product-seed-6-id-14.png",
+      },
+       {
+        id: 65,
+        name: "Перец болгарский Светофор 500г",
+        price: 120,
+        categoryId: 22,
+        imageUrl: "/images/products/product-seed-7-id-15.png",
+      },
+       {
+        id: 66,
+        name: "Чеснок  100г",
+        price: 30,
+        categoryId: 22,
+        imageUrl: "/images/products/product-seed-8-id-16.png",
+      },
+       {
+        id: 67,
+        name: "Баклажан  100г",
+        price: 250,
+        categoryId: 22,
+        imageUrl: "/images/products/product-seed-9-id-17.png",
+      },
+       {
+        id: 68,
+        name: "Кукуруза  100г",
+        price: 250,
+        categoryId: 22,
+        imageUrl: "/images/products/product-seed-10-id-18.png",
+      },
+       {
+        id: 69,
+        name: "Брокколи  100г",
+        price: 250,
+        categoryId: 22,
+        imageUrl: "/images/products/product-seed-11-id-18.png",
       },
       // Крупы (41)
       {
@@ -521,7 +601,7 @@ async function main() {
     ],
   });
 
-  console.log("✅ Seed: 10 категорий + 32 подкатегории + 53 товара");
+  console.log("✅ Seed: 10 категорий + 32 подкатегории + 63 товара");
 }
 
 main()
