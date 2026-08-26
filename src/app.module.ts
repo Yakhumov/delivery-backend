@@ -16,8 +16,8 @@ import { join } from 'path';
     OrdersModule,
     BotModule,
     AuthModule,
-      ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'public'),
+    ServeStaticModule.forRoot({
+      rootPath: join(process.cwd(), 'public'),
       serveRoot: '/',
     }),
   ],
