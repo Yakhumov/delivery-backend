@@ -9,9 +9,12 @@ async function bootstrap() {
 
   app.enableCors({
     origin: '*',
+    methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'Origin', 'X-Requested-With'],
+    optionsSuccessStatus: 204,
   });
 
-app.useStaticAssets(join(process.cwd(), 'public'));
+  app.useStaticAssets(join(process.cwd(), 'public'));
 
   const port = process.env.PORT ?? 3000;
 
