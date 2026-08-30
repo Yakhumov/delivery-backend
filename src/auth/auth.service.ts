@@ -25,15 +25,24 @@ export class AuthService {
   ) {}
 
   async sendOtp(phone: string): Promise<{ message: string }> {
-    const code = Math.floor(1000 + Math.random() * 9000).toString();
-    this.otpStore.set(phone, { code, expiresAt: Date.now() + 10 * 60 * 1000 });
+    if (this.isGooglePlayTestPhone(phone)) {
+      console.log(`[OTP] Google Play test login for ${normalizePhone(phone)}`);
+    } else {
+      const code = Math.floor(1000 + Math.random() * 9000).toString();
+      this.otpStore.set(phone, { code, expiresAt: Date.now() + 10 * 60 * 1000 });
 
-    console.log(`[OTP] ${phone} → ${code}`);
-    await this.sendSms(phone, `Ваш код Uhhe: ${code}`);
+      console.log(`[OTP] ${phone} → ${code}`);
+      await this.sendSms(phone, `Ваш код Uhhe: ${code}`);
+    }
     return { message: 'Код отправлен' };
   }
 
   verifyOtp(phone: string, code: string): { token: string; phone: string } {
+    if (this.isGooglePlayTestPhone(phone) && code === this.getGooglePlayTestCode()) {
+      const token = this.jwt.sign({ phone });
+      return { token, phone };
+    }
+
     const entry = this.otpStore.get(phone);
 
     if (!entry) throw new BadRequestException('Код не найден или истёк');
@@ -46,6 +55,15 @@ export class AuthService {
     this.otpStore.delete(phone);
     const token = this.jwt.sign({ phone });
     return { token, phone };
+  }
+
+  private isGooglePlayTestPhone(phone: string): boolean {
+    const testPhone = process.env.GOOGLE_PLAY_TEST_PHONE;
+    return Boolean(testPhone) && normalizePhone(phone) === normalizePhone(testPhone);
+  }
+
+  private getGooglePlayTestCode(): string | undefined {
+    return process.env.GOOGLE_PLAY_TEST_CODE;
   }
 
   async deleteAccount(authorization?: string): Promise<{ message: string; deletedOrders: number }> {
