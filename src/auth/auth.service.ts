@@ -103,6 +103,11 @@ export class AuthService {
 
   private async sendSms(rawPhone: string, message: string): Promise<void> {
     const phone = rawPhone.replace(/\D/g, '');
+    if (this.isGooglePlayTestPhone(phone)) {
+      console.log(`[OTP] Skipped SMS.RU for Google Play test phone ${phone}`);
+      return;
+    }
+
     const apiId = process.env.SMSRU_API_ID;
     if (!apiId) {
       console.log(`[DEV] SMS to ${phone}: ${message}`);
