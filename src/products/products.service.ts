@@ -8,6 +8,7 @@ export class ProductsService {
 
   async findAll(categoryId?: number) {
     const products = await this.prisma.product.findMany({
+      relationLoadStrategy: 'join',
       where: categoryId ? { categoryId } : undefined,
       include: { category: true },
       orderBy: { id: 'asc' },
